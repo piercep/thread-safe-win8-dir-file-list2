@@ -1,9 +1,4 @@
-thread-safe-win8-dir-file-list
-==============================
-
-Thread Safe Directory and File Listing (for Windows Vista/7/8)
-
-Copyright Philip Pierce © 2010-2014
+ï»¿Copyright Philip Pierce Â© 2010-2014
  
 A recent project I worked on required me to retrieve a large listing of files and 
 folders from a given computer. My original idea was to use the built in 
@@ -13,10 +8,10 @@ However, as I soon found out, there is a problem with both of these functions,
 especially when used in Windows 7 and 8. These functions will error 
 out (and return an empty array), if any of the folders/files are not accessible to 
 the user. So, using Directory.GetDirectories("C:\\"), would return an empty array
-and an exception, depending on the user’s security
+and an exception, depending on the userâ€™s security
 
-The main problem comes from how some folders and files are ACL’d in Windows 7 and 8.
-Most users (including admin), cannot parse the path of some ACL’d folders, even if 
+The main problem comes from how some folders and files are ACLâ€™d in Windows 7 and 8.
+Most users (including admin), cannot parse the path of some ACLâ€™d folders, even if 
 they have permission.
 
 My solution was to create a class which can handle the security errors and 
@@ -38,8 +33,8 @@ me to branch each ForEach loop to a new thread, if a thread is available; otherw
 it will wait for an available thread. PLINQ can also send multiple iterations of the 
 loop to one thread, which also helps to improve efficiency.
 
-You’ll also notice the use multiple catch blocks. I found that two types of exceptions 
-were raised if a user did not have access to a file/folder – IOException and 
+Youâ€™ll also notice the use multiple catch blocks. I found that two types of exceptions 
+were raised if a user did not have access to a file/folder â€“ IOException and 
 UnauthorizedAccessException. There is no reason to do anything when these exceptions 
 are raised, since it simply means the user does not have permission for this file/folder, 
 so we just need to skip it.
